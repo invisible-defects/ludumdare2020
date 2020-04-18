@@ -4,55 +4,53 @@ using UnityEditor.Sprites;
 using UnityEngine;
 using UnityEngine.U2D;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class SpriteSheetController : MonoBehaviour
 {
-    public SpriteAtlas atlas;
+    public List<SpriteAnimation> animations = new List<SpriteAnimation>();
+    public string defaultAnimation;
 
-    public int spriteSheetSize;
+    int frame = 0;
+    float frameStart = 0;
+    private SpriteAnimation current = null;
 
-    public string sheetName;
+    private SpriteRenderer spriteRenderer;
 
-    int currentSprite = 0;
-
-    float timer = 0;
-
-
-    void Start()
+    private void Start()
     {
-        SetSprite(currentSprite);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        Play(defaultAnimation);
     }
 
-    void SetSprite(int i)
+    public void Play(string name)
     {
-        Material mat = this.gameObject.GetComponent<MeshRenderer>().material;
-
-        var sprite = atlas.GetSprite(sheetName + "_" + i.ToString());
-        var croppedTexture = new Texture2D((int)sprite.textureRect.width, (int)sprite.textureRect.height);
-        croppedTexture.filterMode = FilterMode.Point;
-        var pixels = sprite.texture.GetPixels(
-                    (int)sprite.textureRect.x,
-                    (int)sprite.textureRect.y,
-                    (int)sprite.textureRect.width,
-                    (int)sprite.textureRect.height
-        );
-        croppedTexture.SetPixels(pixels);
-        croppedTexture.Apply();
-
-        this.gameObject.GetComponent<Transform>().localScale = new Vector3(croppedTexture.width/20f, croppedTexture.height/20f, 1f);
-
-        mat.SetTexture("_MainTex", croppedTexture);
+        current = animations.Find(animation => animation.name == name);
+        frame = 0;
+        spriteRenderer.sprite = current[frame];
+        frameStart = Time.time;
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer < 0.08f)
+        if (current.FrameCount > 1)
         {
-            return;
+            if ((Time.time - frameStart) >= current.interval * SpeedManager.Instance.FrameMultiplier)
+            {
+                ++frame;
+                if (frame == current.FrameCount)
+                {
+                    if (current.loop)
+                    {
+                        frame = 0;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                spriteRenderer.sprite = current[frame];
+                frameStart = Time.time;
+            }
         }
-
-        timer = 0;
-        currentSprite++;
-        SetSprite(currentSprite%spriteSheetSize);
     }
 }
