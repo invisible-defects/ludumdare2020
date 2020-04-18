@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum State
 {
+    Idle,
     Running,
     Jumping
 }
@@ -11,7 +12,7 @@ public enum State
 [RequireComponent(typeof(Rigidbody), typeof(SpriteSheetController))]
 public class PlayerController : MonoBehaviour
 {
-    private State state = State.Running;
+    private State state = State.Idle;
     private Rigidbody rb;
     private SpriteSheetController ssc;
 
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ssc = GetComponent<SpriteSheetController>();
         ssc.OnAnimationEnd += this.OnAnimationEnd;
+        GameManager.Instance.OnStateChange += this.OnStateChange;
     }
 
     private void Update()
@@ -80,6 +82,23 @@ public class PlayerController : MonoBehaviour
                 break;
             case "JumpEnd":
                 ssc.Play("Run");
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void OnStateChange(GameManager.State state)
+    {
+        switch(state)
+        {
+            case GameManager.State.Playing:
+                this.state = State.Running;
+                ssc.Play("Run");
+                break;
+            case GameManager.State.MainMenu:
+                this.state = State.Idle;
+                ssc.Play("Idle");
                 break;
             default:
                 break;
