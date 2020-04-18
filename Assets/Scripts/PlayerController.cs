@@ -34,11 +34,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.Instance.state != GameManager.State.Playing)
-        {
-            return;
-        }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (state == State.Running)
@@ -95,11 +90,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnStateChange(GameManager.State state)
     {
-        if(state == GameManager.State.Playing)
+        switch(state)
         {
-            ssc.Play("Run");
-        } else if(state == GameManager.State.MainMenu) {
-            ssc.Play("Idle");
+            case GameManager.State.Playing:
+                this.state = State.Running;
+                ssc.Play("Run");
+                break;
+            case GameManager.State.MainMenu:
+                this.state = State.Idle;
+                ssc.Play("Idle");
+                break;
+            default:
+                break;
         }
     }
 }
