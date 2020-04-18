@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RunAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 1
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+    totalSpriteSurfaceArea: 49152
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -6484423351564251646, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+  - {fileID: 4482456140797197232, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+  - {fileID: -2476628705780375253, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+  - {fileID: 5103927010964488549, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+  - {fileID: 8782852116633787260, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+  - {fileID: 1317729581646024616, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+  - {fileID: 5250113213487936655, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+  - {fileID: 8860857794773437821, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+  - {fileID: 6186940821475918415, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+  - {fileID: 3764478722543479037, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+  - {fileID: 2711692248292253186, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+  - {fileID: -988060488565610216, guid: 1e3c520f4d48bb442a00305cf4c328ad, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - run-Sheet_5
+  - run-Sheet_4
+  - run-Sheet_7
+  - run-Sheet_6
+  - run-Sheet_1
+  - run-Sheet_0
+  - run-Sheet_3
+  - run-Sheet_2
+  - run-Sheet_9
+  - run-Sheet_8
+  - run-Sheet_10
+  - run-Sheet_11
+  m_Tag: RunAtlas
+  m_IsVariant: 0
