@@ -4,21 +4,32 @@ using UnityEngine;
 
 public class SpeedManager : Singleton<SpeedManager>
 {
-    public float Speed { get; private set; } = 1f;
+    public float SpeedMultiplier { get; private set; } = 1f;
 
     public float FrameMultiplier
     {
         get
         {
-            return 1 / Speed;
+            return 1 / SpeedMultiplier;
+        }
+    }
+
+    public float Speed
+    {
+        get
+        {
+            return SpeedMultiplier * playerSpeed;
         }
     }
 
     [SerializeField]
     private float acceleration = 0.1f;
 
+    [SerializeField]
+    private float playerSpeed = 2f;
+
     private void Update()
     {
-        Speed += acceleration * Time.deltaTime;
+        SpeedMultiplier += acceleration * Time.deltaTime;
     }
 }

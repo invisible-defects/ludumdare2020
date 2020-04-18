@@ -759,7 +759,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a6fa85c646a4843b5073428985773e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 0.1
+  acceleration: 0
+  playerSpeed: 2
 --- !u!4 &329019663
 Transform:
   m_ObjectHideFlags: 0
@@ -3336,4 +3337,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrain1: {fileID: 927745146}
   terrain2: {fileID: 2121616322}
-  speedManager: {fileID: 329019662}

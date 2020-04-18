@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5743d098fb880f4a92ef125140d619f, type: 3}
+  m_Name: Barrel
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: 1380203805528671675, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: -7723265081315097764, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: -6367150394137065162, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: -4567092851126130046, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: 5449632007625061378, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: -5646961464007673631, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: -8845929038980579371, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: 967326992472526932, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: 7617237857999664451, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: 6235341395919108319, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: -6108196571719095370, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: 6847854064433285165, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: 8204853174764615390, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: 1926217255272095661, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: -3139330290584554212, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  - {fileID: 6285563817733166075, guid: 973be783bbcf6aa4aa418c4a92b5313d, type: 3}
+  interval: 0.05
+  loop: 1
