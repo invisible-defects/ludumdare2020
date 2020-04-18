@@ -18,7 +18,7 @@ public class TerrainManager : MonoBehaviour
     {
         var rot = t.rotation;
         var pos = t.position;
-        pos.x -= speedManager.Speed * Time.deltaTime;
+        pos.x -= speedManager.Speed * Time.deltaTime * 2;
         if(pos.x < -21.5f)
         {
             pos.x = 21.5f;
