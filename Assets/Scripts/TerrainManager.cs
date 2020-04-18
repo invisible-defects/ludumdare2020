@@ -10,8 +10,11 @@ public class TerrainManager : MonoBehaviour
 
     void Update()
     {
-        moveTerrain(terrain1);
-        moveTerrain(terrain2);
+        if(GameManager.Instance.state == GameManager.State.Playing)
+        {
+            moveTerrain(terrain1);
+            moveTerrain(terrain2);
+        }
     }
 
     void moveTerrain(Transform t)
