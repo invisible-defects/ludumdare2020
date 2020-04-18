@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: JumpStart
   m_EditorClassIdentifier: 
   frames:
-  - {fileID: -7216112254584267498, guid: f9ccc099623e6414ebe13346ba11eab9, type: 3}
   - {fileID: 3651456039500876207, guid: f9ccc099623e6414ebe13346ba11eab9, type: 3}
   - {fileID: 4012289829585537097, guid: f9ccc099623e6414ebe13346ba11eab9, type: 3}
-  - {fileID: 7689296029914432677, guid: f9ccc099623e6414ebe13346ba11eab9, type: 3}
   interval: 0.05
   loop: 0

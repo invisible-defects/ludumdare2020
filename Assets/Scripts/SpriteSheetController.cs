@@ -10,9 +10,14 @@ public class SpriteSheetController : MonoBehaviour
     public List<SpriteAnimation> animations = new List<SpriteAnimation>();
     public string defaultAnimation;
 
+    public delegate void AnimationEnd(string name);
+    public event AnimationEnd OnAnimationEnd;
+
     int frame = 0;
     float frameStart = 0;
     private SpriteAnimation current = null;
+
+    public string Current { get { return current?.name; } }
 
     private SpriteRenderer spriteRenderer;
 
@@ -34,7 +39,8 @@ public class SpriteSheetController : MonoBehaviour
     {
         if (current.FrameCount > 1)
         {
-            if ((Time.time - frameStart) >= current.interval * SpeedManager.Instance.FrameMultiplier)
+            if ((Time.time - frameStart) >= current.interval * SpeedManager.Instance.FrameMultiplier &&
+                frame < current.FrameCount)
             {
                 ++frame;
                 if (frame == current.FrameCount)
@@ -45,6 +51,7 @@ public class SpriteSheetController : MonoBehaviour
                     }
                     else
                     {
+                        OnAnimationEnd?.Invoke(current.name);
                         return;
                     }
                 }
