@@ -20,10 +20,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float freeSpeed;
 
+    [SerializeField]
+    private float topThreshold;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         ssc = GetComponent<SpriteSheetController>();
+        ssc.OnAnimationEnd += this.OnAnimationEnd;
     }
 
     private void Update()
@@ -33,8 +37,7 @@ public class PlayerController : MonoBehaviour
             if (state == State.Running)
             {
                 state = State.Jumping;
-                rb.velocity = Vector2.up * jumpSpeed;
-                ssc.Play("JumpTop");
+                ssc.Play("JumpStart");
             }
         }
         if (Input.GetKeyUp(KeyCode.Space))
@@ -44,6 +47,18 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = Vector2.up * (Mathf.Min(rb.velocity.y, freeSpeed));
             }
         }
+
+        if (state == State.Jumping)
+        {
+            if (ssc.Current == "JumpUp" && Mathf.Abs(rb.velocity.y) < topThreshold)
+            {
+                ssc.Play("JumpTop");
+            }
+            else if (ssc.Current == "JumpTop" && Mathf.Abs(rb.velocity.y) > topThreshold)
+            {
+                ssc.Play("JumpDown");
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -51,7 +66,23 @@ public class PlayerController : MonoBehaviour
         if (state == State.Jumping)
         {
             state = State.Running;
-            ssc.Play("Run");
+            ssc.Play("JumpEnd");
+        }
+    }
+
+    private void OnAnimationEnd(string name)
+    {
+        switch (name)
+        {
+            case "JumpStart":
+                rb.velocity = Vector2.up * jumpSpeed;
+                ssc.Play("JumpUp");
+                break;
+            case "JumpEnd":
+                ssc.Play("Run");
+                break;
+            default:
+                break;
         }
     }
 }

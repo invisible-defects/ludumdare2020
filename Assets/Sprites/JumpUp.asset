@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: JumpUp
   m_EditorClassIdentifier: 
   frames:
+  - {fileID: 7689296029914432677, guid: f9ccc099623e6414ebe13346ba11eab9, type: 3}
   - {fileID: -5559578400810973388, guid: f9ccc099623e6414ebe13346ba11eab9, type: 3}
   interval: 0.05
   loop: 0
