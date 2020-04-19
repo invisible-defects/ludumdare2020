@@ -16,8 +16,21 @@ public class GameManager : Singleton<GameManager>
 
     public ReactiveProperty<State> state = new ReactiveProperty<State>(State.MainMenu);
 
-    void Start()
+    public ReactiveProperty<int> score = new ReactiveProperty<int>(0);
+
+    public float distance = 0f;
+
+    private void Start()
     {
         HighScore = PlayerPrefs.GetFloat("HighScore", 0f);
+    }
+
+    private void Update()
+    {
+        if (state.Value == State.Playing)
+        {
+            distance += SpeedManager.Instance.Speed * Time.deltaTime;
+            score.Value = Mathf.FloorToInt(distance * 10);
+        }
     }
 }

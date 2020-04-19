@@ -6,7 +6,7 @@ using Neat;
 using static Neat.DSL;
 
 [RequireComponent(typeof(RectTransform))]
-public class Button : MonoBehaviour
+public class MenuButton : MonoBehaviour
 {
     [SerializeField]
     private Vector2 delta = new Vector2(10, 10);
@@ -48,8 +48,8 @@ public class Button : MonoBehaviour
     {
         var modChildren = new List<Node>(children)
         {
-            OnPointerEnter(rt => rt.GetComponent<Button>().Enter()),
-            OnPointerExit(rt => rt.GetComponent<Button>().Exit())
+            OnPointerEnter(rt => rt.GetComponent<MenuButton>().Enter()),
+            OnPointerExit(rt => rt.GetComponent<MenuButton>().Exit())
         };
 
         return DrawLeaf(name, modChildren.ToArray());

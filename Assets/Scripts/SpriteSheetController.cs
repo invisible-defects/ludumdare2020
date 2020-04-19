@@ -1,8 +1,6 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Sprites;
-using UnityEngine;
-using UnityEngine.U2D;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class SpriteSheetController : MonoBehaviour

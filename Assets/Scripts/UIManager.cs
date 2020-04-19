@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 using Neat;
 using static Neat.DSL;
+using TMPro;
 
 public class UIManager : UIBehaviour
 {
@@ -16,6 +17,7 @@ public class UIManager : UIBehaviour
     {
         base.Start();
         GameManager.Instance.state.OnChanged += OnUpdate;
+        GameManager.Instance.score.OnChanged += OnUpdate;
     }
 
     private void OnUpdate()
@@ -25,27 +27,46 @@ public class UIManager : UIBehaviour
 
     protected override UINode Render()
     {
+        var state = GameManager.Instance.state.Value;
         return Draw("Root",
-            DrawMenu()
+            Do(() =>
+            {
+                switch (state)
+                {
+                    case GameManager.State.MainMenu:
+                        return DrawMenu();
+                    case GameManager.State.Playing:
+                    case GameManager.State.GameOver:
+                        return DrawGameUI();
+                    //case GameManager.State.Credits:
+                    //    break;
+                    default:
+                        return null;
+                }
+            })
         );
     }
 
     private UINode DrawMenu()
     {
-        if (GameManager.Instance.state.Value != GameManager.State.MainMenu)
-        {
-            return null;
-        }
-
         return Draw("MainMenu",
                 Draw("Column",
                     DrawLeaf("Title"),
-                    Button.Draw("Start",
+                    MenuButton.Draw("Start",
                         OnClick(_ => GameManager.Instance.state.Value = GameManager.State.Playing)
                     ),
-                    Button.Draw("Credits")
+                    MenuButton.Draw("Credits")
                 ),
                 DrawLeaf("LD")
+            );
+    }
+
+    private UINode DrawGameUI()
+    {
+        return Draw("GameUI",
+                DrawLeaf("Text (TMP)",
+                    Set<TMP_Text>(t => t.text = "SCORE: " + GameManager.Instance.score.Value)
+                )
             );
     }
 }
