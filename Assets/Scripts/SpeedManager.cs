@@ -30,6 +30,14 @@ public class SpeedManager : Singleton<SpeedManager>
 
     private void Update()
     {
-        SpeedMultiplier += acceleration * Time.deltaTime;
+        if (GameManager.Instance.state == GameManager.State.Playing)
+        {
+            SpeedMultiplier += acceleration * Time.deltaTime;
+        }
+        else
+        {
+            if (SpeedMultiplier != 1)
+                SpeedMultiplier = 1;
+        }
     }
 }

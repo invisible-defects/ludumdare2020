@@ -39,7 +39,8 @@ public class SpriteSheetController : MonoBehaviour
     {
         if (current.FrameCount > 1)
         {
-            if ((Time.time - frameStart) >= current.interval * SpeedManager.Instance.FrameMultiplier &&
+            var multiplier = current.useMultiplier ? SpeedManager.Instance.FrameMultiplier : 1;
+            if ((Time.time - frameStart) >= current.interval * multiplier &&
                 frame < current.FrameCount)
             {
                 ++frame;

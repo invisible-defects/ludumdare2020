@@ -9,6 +9,7 @@ public class SpriteAnimation : ScriptableObject
     private Sprite[] frames;
     public float interval;
     public bool loop;
+    public bool useMultiplier;
 
     public int FrameCount
     {

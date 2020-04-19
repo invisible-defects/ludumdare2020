@@ -16,3 +16,4 @@ MonoBehaviour:
   - {fileID: 7906389508457411716, guid: f9ccc099623e6414ebe13346ba11eab9, type: 3}
   interval: 0.05
   loop: 0
+  useMultiplier: 1

@@ -33,3 +33,4 @@ MonoBehaviour:
   - {fileID: -933978348985973639, guid: 4f36ae824d09e664ca37c9c0f4ced736, type: 3}
   interval: 0.05
   loop: 1
+  useMultiplier: 1

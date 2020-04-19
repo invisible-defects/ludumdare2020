@@ -26,17 +26,16 @@ public class UIManager : UIBehaviour
 
     private UINode DrawMenu()
     {
-        if(GameManager.Instance.state != GameManager.State.MainMenu)
+        if (GameManager.Instance.state != GameManager.State.MainMenu)
         {
             return null;
         }
 
-        var title = DrawLeaf("Title");
-        var start = DrawLeaf("Start", OnClick(_ => GameManager.Instance.Play()));
-        // TODO: add onclick
-        var creds = DrawLeaf("Credits");
-        var ld = DrawLeaf("LD");
-
-        return Draw("MainMenu", new UINode[]{title, start, creds, ld});
+        return Draw("MainMenu",
+                DrawLeaf("Title"),
+                DrawLeaf("Start", OnClick(_ => GameManager.Instance.Play())),
+                DrawLeaf("Credits"),
+                DrawLeaf("LD")
+            );
     }
 }
