@@ -32,9 +32,11 @@ public class UIManager : UIBehaviour
         }
 
         return Draw("MainMenu",
-                DrawLeaf("Title"),
-                DrawLeaf("Start", OnClick(_ => GameManager.Instance.Play())),
-                DrawLeaf("Credits"),
+                Draw("Column",
+                    DrawLeaf("Title"),
+                    DrawLeaf("Start", OnClick(_ => GameManager.Instance.Play())),
+                    DrawLeaf("Credits")
+                ),
                 DrawLeaf("LD")
             );
     }
