@@ -22,7 +22,8 @@ public abstract class BaseObjectPool : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.state.Value == GameManager.State.Playing)
+        if (GameManager.Instance.state.Value == GameManager.State.Playing ||
+            GameManager.Instance.state.Value == GameManager.State.GameOver)
         {
             CheckDispawn();
             Generate();

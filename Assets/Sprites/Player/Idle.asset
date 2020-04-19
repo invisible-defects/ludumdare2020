@@ -21,3 +21,4 @@ MonoBehaviour:
   - {fileID: -4543481905214882903, guid: 7d3ffdb7ed96e62408711cd7f5b8b498, type: 3}
   interval: 0.5
   loop: 1
+  useMultiplier: 0

@@ -40,8 +40,10 @@ public class UIManager : UIBehaviour
         return Draw("MainMenu",
                 Draw("Column",
                     DrawLeaf("Title"),
-                    DrawLeaf("Start", OnClick(_ => GameManager.Instance.state.Value = GameManager.State.Playing)),
-                    DrawLeaf("Credits")
+                    Button.Draw("Start",
+                        OnClick(_ => GameManager.Instance.state.Value = GameManager.State.Playing)
+                    ),
+                    Button.Draw("Credits")
                 ),
                 DrawLeaf("LD")
             );

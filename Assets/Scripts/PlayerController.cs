@@ -6,7 +6,8 @@ public enum State
 {
     Idle,
     Running,
-    Jumping
+    Jumping,
+    Dead
 }
 
 [RequireComponent(typeof(Rigidbody), typeof(SpriteSheetController))]
@@ -69,6 +70,16 @@ public class PlayerController : MonoBehaviour
         {
             state = State.Running;
             ssc.Play("JumpEnd");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Barrel"))
+        {
+            state = State.Dead;
+            GameManager.Instance.state.Value = GameManager.State.GameOver;
+            ssc.Play("Death");
         }
     }
 
