@@ -12,6 +12,12 @@ public class UIManager : UIBehaviour
     private Transform root;
     protected override Transform GetRoot() => root;
 
+    protected override void Start()
+    {
+        base.Start();
+        GameManager.Instance.state.OnChanged += OnUpdate;
+    }
+
     private void OnUpdate()
     {
         this.ReDraw();
@@ -26,7 +32,7 @@ public class UIManager : UIBehaviour
 
     private UINode DrawMenu()
     {
-        if (GameManager.Instance.state != GameManager.State.MainMenu)
+        if (GameManager.Instance.state.Value != GameManager.State.MainMenu)
         {
             return null;
         }
@@ -34,7 +40,7 @@ public class UIManager : UIBehaviour
         return Draw("MainMenu",
                 Draw("Column",
                     DrawLeaf("Title"),
-                    DrawLeaf("Start", OnClick(_ => GameManager.Instance.Play())),
+                    DrawLeaf("Start", OnClick(_ => GameManager.Instance.state.Value = GameManager.State.Playing)),
                     DrawLeaf("Credits")
                 ),
                 DrawLeaf("LD")

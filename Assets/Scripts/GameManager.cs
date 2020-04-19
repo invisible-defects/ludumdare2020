@@ -14,22 +14,10 @@ public class GameManager : Singleton<GameManager>
         Credits
     }
 
-    public State state = State.MainMenu;
-
-    public delegate void StateChange(State state);
-    public event StateChange OnStateChange;
+    public ReactiveProperty<State> state = new ReactiveProperty<State>(State.MainMenu);
 
     void Start()
     {
         HighScore = PlayerPrefs.GetFloat("HighScore", 0f);
-    }
-
-    public void Play()
-    {
-        if(state == State.MainMenu)
-        {
-            OnStateChange?.Invoke(State.Playing);
-            state = State.Playing;
-        }
     }
 }

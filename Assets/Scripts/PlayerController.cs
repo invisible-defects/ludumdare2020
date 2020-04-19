@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ssc = GetComponent<SpriteSheetController>();
         ssc.OnAnimationEnd += this.OnAnimationEnd;
-        GameManager.Instance.OnStateChange += this.OnStateChange;
+        GameManager.Instance.state.OnChanged += this.OnStateChange;
     }
 
     private void Update()
@@ -88,9 +88,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnStateChange(GameManager.State state)
+    private void OnStateChange()
     {
-        switch(state)
+        switch(GameManager.Instance.state.Value)
         {
             case GameManager.State.Playing:
                 this.state = State.Running;
