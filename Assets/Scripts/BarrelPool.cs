@@ -16,6 +16,7 @@ public class BarrelPool : BaseObjectPool
     {
         base.Start();
         GameManager.Instance.gameMode.OnChanged += this.GameModeOnChanged;
+        GameManager.Instance.state.OnChanged += this.StateOnChanged;
     }
 
     private void GameModeOnChanged()
@@ -28,6 +29,16 @@ public class BarrelPool : BaseObjectPool
             case GameManager.GameMode.Drones:
                 this.shouldGenerate = false;
                 break;
+        }
+    }
+
+    private void StateOnChanged()
+    {
+        if (GameManager.Instance.state.Value == GameManager.State.MainMenu)
+        {
+            // Reset
+            this.shouldGenerate = true;
+            CleanUp();
         }
     }
 
@@ -52,6 +63,14 @@ public class BarrelPool : BaseObjectPool
             {
                 GetRandom(position);
             }
+        }
+    }
+
+    private void CleanUp()
+    {
+        while (activeObjects.Count > 0)
+        {
+            Remove(activeObjects.Count - 1);
         }
     }
 }

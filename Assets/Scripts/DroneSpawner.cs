@@ -29,6 +29,7 @@ public class DroneSpawner : Singleton<DroneSpawner>
     {
         box = GetComponent<BoxCollider>();
         GameManager.Instance.gameMode.OnChanged += this.GameModeOnChanged;
+        GameManager.Instance.state.OnChanged += this.StateOnChanged;
     }
 
     private void Update()
@@ -88,6 +89,17 @@ public class DroneSpawner : Singleton<DroneSpawner>
         if (dronesCount == 0)
         {
             CheckSpawn();
+        }
+    }
+
+    private void StateOnChanged()
+    {
+        if (GameManager.Instance.state.Value == GameManager.State.MainMenu)
+        {
+            // Reset
+            toSpawn = 0;
+            dronesCount = 0;
+            startTime = null;
         }
     }
 }

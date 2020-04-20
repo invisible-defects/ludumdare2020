@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpeedManager : Singleton<SpeedManager>
 {
-    public float SpeedMultiplier { get; private set; } = 1f;
+    public float SpeedMultiplier { get; private set; }
 
     public float FrameMultiplier
     {
@@ -23,6 +23,9 @@ public class SpeedManager : Singleton<SpeedManager>
     }
 
     [SerializeField]
+    private float startSpeed = 1.25f;
+
+    [SerializeField]
     private float acceleration = 0.1f;
 
     [SerializeField]
@@ -36,6 +39,7 @@ public class SpeedManager : Singleton<SpeedManager>
 
     private void Start()
     {
+        SpeedMultiplier = startSpeed;
         GameManager.Instance.state.OnChanged += OnStateChange;
     }
 
@@ -52,8 +56,8 @@ public class SpeedManager : Singleton<SpeedManager>
         }
         else
         {
-            if (SpeedMultiplier != 1)
-                SpeedMultiplier = 1;
+            if (SpeedMultiplier != startSpeed)
+                SpeedMultiplier = startSpeed;
         }
     }
 

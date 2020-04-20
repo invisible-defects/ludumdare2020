@@ -23,4 +23,9 @@ public class ReactiveProperty<T>
     {
         _value = value;
     }
+
+    public void SilentSet(T value)
+    {
+        _value = value;
+    }
 }
