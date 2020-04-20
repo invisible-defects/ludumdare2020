@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public float HighScore { get; private set; } = 0f;
+    public int HighScore { get; private set; } = 0;
 
     public enum State 
     {
@@ -45,8 +45,9 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        HighScore = PlayerPrefs.GetFloat("HighScore", 0f);
         toSpawn = startSpawn - spawnStep;
+        HighScore = PlayerPrefs.GetInt("HighScore", 0);
+        state.OnChanged += OnStateChanged;
     }
 
     private void Update()
@@ -72,5 +73,20 @@ public class GameManager : Singleton<GameManager>
     {
         lastGameModeChange = Time.time;
         this.gameMode.Value = gameMode;
+    }
+
+    private void OnStateChanged()
+    {
+        if(state.Value == State.MainMenu)
+        {
+            if(score.Value > HighScore)
+            {
+                HighScore = score.Value;
+                PlayerPrefs.SetInt("HighScore", HighScore);
+            }
+
+            score.Value = 0;
+            distance = 0;
+        }
     }
 }

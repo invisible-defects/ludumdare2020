@@ -40,10 +40,13 @@ public class UIManager : UIBehaviour
                     case GameManager.State.MainMenu:
                         return DrawMenu();
                     case GameManager.State.Playing:
-                    case GameManager.State.GameOver:
                         return DrawGameUI();
+                    case GameManager.State.GameOver:
+                        return DrawGameOver();
                     case GameManager.State.Tutorial:
                         return DrawTutorial();
+                    case GameManager.State.Credits:
+                        return DrawCredits();
                     default:
                         return null;
                 }
@@ -53,24 +56,36 @@ public class UIManager : UIBehaviour
 
     private UINode DrawMenu()
     {
+        var scoreString = "HIGHSCORE: " + GameManager.Instance.HighScore;
+
         return Draw("MainMenu",
                 Draw("Column",
                     DrawLeaf("Title"),
                     MenuButton.Draw("Start",
                         OnClick(_ => GameManager.Instance.state.Value = GameManager.State.Tutorial)
                     ),
-                    MenuButton.Draw("Credits")
+                    MenuButton.Draw("Credits",
+                        OnClick(_ => GameManager.Instance.state.Value = GameManager.State.Credits)
+                    )
                 ),
                 DrawLeaf("LD"),
-                DrawLeaf("BG")
+                DrawLeaf("BG"),
+                Draw("HighScore", Set<TMP_Text>(t => t.text = scoreString),
+                    Draw("Red", Set<TMP_Text>(t => t.text = scoreString)),
+                    Draw("Purple", Set<TMP_Text>(t => t.text = scoreString)),
+                    Draw("Green", Set<TMP_Text>(t => t.text = scoreString))
+                )
             );
     }
 
     private UINode DrawGameUI()
     {
+        var scoreString = "SCORE: " + GameManager.Instance.score.Value;
         return Draw("GameUI",
-                DrawLeaf("Text (TMP)",
-                    Set<TMP_Text>(t => t.text = "SCORE: " + GameManager.Instance.score.Value)
+                Draw("Score", Set<TMP_Text>(t => t.text = scoreString),
+                    Draw("Red", Set<TMP_Text>(t => t.text = scoreString)),
+                    Draw("Purple", Set<TMP_Text>(t => t.text = scoreString)),
+                    Draw("Green", Set<TMP_Text>(t => t.text = scoreString))
                 ),
                 DrawLeaf("Cooldown",
                     Set<Image>(i => i.fillAmount = player.cooldown.Value)
@@ -86,6 +101,41 @@ public class UIManager : UIBehaviour
                     DrawLeaf("Tutorial"),
                     MenuButton.Draw("Ok",
                         OnClick(_ => GameManager.Instance.state.Value = GameManager.State.Playing)
+                    )
+                ),
+                DrawLeaf("BG")
+            );
+    }
+
+    private UINode DrawGameOver()
+    {
+        var scoreString = GameManager.Instance.score.Value.ToString();
+
+        return Draw("GameOver",
+                Draw("Column",
+                    DrawLeaf("Title"),
+                    Draw("Score", Set<TMP_Text>(t => t.text = scoreString),
+                        Draw("Red", Set<TMP_Text>(t => t.text = scoreString)),
+                        Draw("Purple", Set<TMP_Text>(t => t.text = scoreString)),
+                        Draw("Green", Set<TMP_Text>(t => t.text = scoreString))
+                    ),
+                    DrawLeaf("Text"),
+                    MenuButton.Draw("Ok",
+                        OnClick(_ => GameManager.Instance.state.Value = GameManager.State.MainMenu)
+                    )
+                ),
+                DrawLeaf("BG")
+            );
+    }
+
+    private UINode DrawCredits()
+    {
+        return Draw("Credits",
+                Draw("Column",
+                    DrawLeaf("Title"),
+                    DrawLeaf("Creds"),
+                    MenuButton.Draw("Ok",
+                        OnClick(_ => GameManager.Instance.state.Value = GameManager.State.MainMenu)
                     )
                 ),
                 DrawLeaf("BG")
