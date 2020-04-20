@@ -54,6 +54,8 @@ public class UIManager : UIBehaviour
 
     private UINode DrawMenu()
     {
+        var scoreString = "HIGHSCORE: " + GameManager.Instance.HighScore;
+
         return Draw("MainMenu",
                 Draw("Column",
                     DrawLeaf("Title"),
@@ -63,7 +65,12 @@ public class UIManager : UIBehaviour
                     MenuButton.Draw("Credits")
                 ),
                 DrawLeaf("LD"),
-                DrawLeaf("BG")
+                DrawLeaf("BG"),
+                Draw("HighScore", Set<TMP_Text>(t => t.text = scoreString),
+                    Draw("Red", Set<TMP_Text>(t => t.text = scoreString)),
+                    Draw("Purple", Set<TMP_Text>(t => t.text = scoreString)),
+                    Draw("Green", Set<TMP_Text>(t => t.text = scoreString))
+                )
             );
     }
 
