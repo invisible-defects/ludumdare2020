@@ -87,8 +87,6 @@ public class GameManager : Singleton<GameManager>
                 PlayerPrefs.SetInt("HighScore", HighScore);
             }
 
-            Debug.Log("score reset");
-
             score.Value = 0;
             distance = 0;
         }

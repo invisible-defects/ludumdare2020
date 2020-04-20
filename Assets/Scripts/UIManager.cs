@@ -45,6 +45,8 @@ public class UIManager : UIBehaviour
                         return DrawGameOver();
                     case GameManager.State.Tutorial:
                         return DrawTutorial();
+                    case GameManager.State.Credits:
+                        return DrawCredits();
                     default:
                         return null;
                 }
@@ -62,7 +64,9 @@ public class UIManager : UIBehaviour
                     MenuButton.Draw("Start",
                         OnClick(_ => GameManager.Instance.state.Value = GameManager.State.Tutorial)
                     ),
-                    MenuButton.Draw("Credits")
+                    MenuButton.Draw("Credits",
+                        OnClick(_ => GameManager.Instance.state.Value = GameManager.State.Credits)
+                    )
                 ),
                 DrawLeaf("LD"),
                 DrawLeaf("BG"),
@@ -116,6 +120,20 @@ public class UIManager : UIBehaviour
                         Draw("Green", Set<TMP_Text>(t => t.text = scoreString))
                     ),
                     DrawLeaf("Text"),
+                    MenuButton.Draw("Ok",
+                        OnClick(_ => GameManager.Instance.state.Value = GameManager.State.MainMenu)
+                    )
+                ),
+                DrawLeaf("BG")
+            );
+    }
+
+    private UINode DrawCredits()
+    {
+        return Draw("Credits",
+                Draw("Column",
+                    DrawLeaf("Title"),
+                    DrawLeaf("Creds"),
                     MenuButton.Draw("Ok",
                         OnClick(_ => GameManager.Instance.state.Value = GameManager.State.MainMenu)
                     )
