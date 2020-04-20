@@ -64667,7 +64667,7 @@ GameObject:
   - component: {fileID: 1441289341}
   - component: {fileID: 1441289338}
   - component: {fileID: 1441289340}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -65872,7 +65872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1465987781}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87239,8 +87239,8 @@ MonoBehaviour:
   dronePrefab: {fileID: 6075190532703877222, guid: 39a749c10dc9d5f47ae271cafe961a97,
     type: 3}
   targetBox: {fileID: 217273939}
-  minSpawn: 1
-  maxSpawn: 3
+  minSpawn: 20
+  maxSpawn: 20
   delay: 10
 --- !u!1 &1938140941
 GameObject:
