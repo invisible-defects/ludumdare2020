@@ -13,11 +13,15 @@ public class UIManager : UIBehaviour
     private Transform root;
     protected override Transform GetRoot() => root;
 
+    [SerializeField]
+    private PlayerController player;
+
     protected override void Start()
     {
         base.Start();
         GameManager.Instance.state.OnChanged += OnUpdate;
         GameManager.Instance.score.OnChanged += OnUpdate;
+        player.cooldown.OnChanged += OnUpdate;
     }
 
     private void OnUpdate()
@@ -66,6 +70,9 @@ public class UIManager : UIBehaviour
         return Draw("GameUI",
                 DrawLeaf("Text (TMP)",
                     Set<TMP_Text>(t => t.text = "SCORE: " + GameManager.Instance.score.Value)
+                ),
+                DrawLeaf("Cooldown",
+                    Set<Image>(i => i.fillAmount = player.cooldown.Value)
                 )
             );
     }

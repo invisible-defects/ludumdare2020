@@ -17,12 +17,12 @@ public abstract class BaseObjectPool : MonoBehaviour
 
     protected ObjectPool objectPool = new ObjectPool();
 
-    void Start()
+    protected virtual void Start()
     {
         objectPool = new ObjectPool(poolObjects);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (GameManager.Instance.state.Value == GameManager.State.Playing ||
             GameManager.Instance.state.Value == GameManager.State.GameOver)

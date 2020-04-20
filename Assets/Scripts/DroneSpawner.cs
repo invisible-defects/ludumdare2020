@@ -16,10 +16,32 @@ public class DroneSpawner : MonoBehaviour
     [SerializeField]
     private int maxSpawn = 3;
 
+    [SerializeField]
+    private float delay = 10f;
+
+    private float? startTime = null;
+
     private void Start()
     {
         box = GetComponent<BoxCollider>();
-        Spawn();
+        GameManager.Instance.gameMode.OnChanged += this.GameModeOnChanged;
+    }
+
+    private void Update()
+    {
+        if (startTime.HasValue && Time.time >= startTime.Value)
+        {
+            Spawn();
+            startTime = null;
+        }
+    }
+
+    private void GameModeOnChanged()
+    {
+        if (GameManager.Instance.gameMode.Value == GameManager.GameMode.Drones)
+        {
+            startTime = Time.time + delay;
+        }
     }
 
     private void Spawn()

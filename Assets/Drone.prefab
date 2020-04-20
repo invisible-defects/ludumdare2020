@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 138411881009113874}
   - component: {fileID: 138411881009113875}
   - component: {fileID: 138411881009113876}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6075190532703877218}
   - component: {fileID: 6075190532703877228}
   - component: {fileID: 6075190532703877219}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,6 +199,9 @@ MonoBehaviour:
   upComponent: 3
   maxSpeed: 5
   acceleration: 0.1
+  countdownThreshold: 0.1
+  countdownTime: 5
+  countdownDeviation: 1
   hoverTarget: {x: 0, y: 0}
 --- !u!65 &6075190532703877228
 BoxCollider:
@@ -208,7 +211,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6075190532703877222}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.3, z: 0.2}
@@ -238,7 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6075190534446199542}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

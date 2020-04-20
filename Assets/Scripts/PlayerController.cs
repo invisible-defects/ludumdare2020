@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum State
-{
-    Idle,
-    Running,
-    Jumping,
-    Dead
-}
 
 [RequireComponent(typeof(Rigidbody), typeof(SpriteSheetController))]
 public class PlayerController : MonoBehaviour
 {
-    private State state = State.Idle;
+    public enum PlayerState
+    {
+        Idle,
+        Running,
+        Jumping,
+        Dead
+    }
+
+    public PlayerState State { get; private set; } = PlayerState.Idle;
+
     private Rigidbody rb;
     private SpriteSheetController ssc;
 
@@ -24,6 +26,18 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float topThreshold;
+
+    [SerializeField]
+    private Transform bulletSpawn;
+    [SerializeField]
+    private GameObject bullet;
+    [SerializeField]
+    private float bulletSpeed = 5f;
+
+    public ReactiveProperty<float> cooldown = new ReactiveProperty<float>(1);
+
+    [SerializeField]
+    private float cooldownSpeed = 1f;
 
     private void Start()
     {
@@ -37,21 +51,21 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            if (state == State.Running)
+            if (State == PlayerState.Running)
             {
-                state = State.Jumping;
+                State = PlayerState.Jumping;
                 ssc.Play("JumpStart");
             }
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if (state == State.Jumping)
+            if (State == PlayerState.Jumping)
             {
                 rb.velocity = Vector2.up * (Mathf.Min(rb.velocity.y, freeSpeed));
             }
         }
 
-        if (state == State.Jumping)
+        if (State == PlayerState.Jumping)
         {
             if (ssc.Current == "JumpUp" && Mathf.Abs(rb.velocity.y) < topThreshold)
             {
@@ -62,13 +76,44 @@ public class PlayerController : MonoBehaviour
                 ssc.Play("JumpDown");
             }
         }
+
+        if (State == PlayerState.Running || State == PlayerState.Jumping)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (Mathf.Approximately(cooldown.Value, 1))
+                {
+                    cooldown.Value = 0;
+                    var spawnOnScreen = Camera.main.WorldToScreenPoint(bulletSpawn.position);
+                    var direction = (Input.mousePosition - spawnOnScreen).normalized;
+                    var angle = Mathf.Atan2(direction.y, direction.x);
+                    var rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
+                    var newBullet = Instantiate(bullet, bulletSpawn.position, rotation);
+                    var bulletRb = newBullet.GetComponent<Rigidbody>();
+                    bulletRb.velocity = newBullet.transform.right * bulletSpeed;
+                    Destroy(newBullet, 5);
+                }
+            }
+
+            if (cooldown.Value < 1)
+            {
+                cooldown.Value = Mathf.Clamp01(cooldown.Value + cooldownSpeed * Time.deltaTime);
+            }
+        }
+    }
+
+    public void Death()
+    {
+        State = PlayerState.Dead;
+        GameManager.Instance.state.Value = GameManager.State.GameOver;
+        ssc.Play("Death");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (state == State.Jumping)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Default") && State == PlayerState.Jumping)
         {
-            state = State.Running;
+            State = PlayerState.Running;
             ssc.Play("JumpEnd");
         }
     }
@@ -77,9 +122,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Barrel"))
         {
-            state = State.Dead;
-            GameManager.Instance.state.Value = GameManager.State.GameOver;
-            ssc.Play("Death");
+            Death();
         }
     }
 
@@ -104,11 +147,11 @@ public class PlayerController : MonoBehaviour
         switch(GameManager.Instance.state.Value)
         {
             case GameManager.State.Playing:
-                this.state = State.Running;
+                this.State = PlayerState.Running;
                 ssc.Play("Run");
                 break;
             case GameManager.State.MainMenu:
-                this.state = State.Idle;
+                this.State = PlayerState.Idle;
                 ssc.Play("Idle");
                 break;
             default:

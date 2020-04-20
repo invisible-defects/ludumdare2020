@@ -20,5 +20,5 @@ MonoBehaviour:
   - {fileID: -49130668184793455, guid: 67055a2234438ab499a998f213844170, type: 3}
   - {fileID: -2330519403281856691, guid: 67055a2234438ab499a998f213844170, type: 3}
   interval: 0.1
-  loop: 1
+  loop: 0
   useMultiplier: 0

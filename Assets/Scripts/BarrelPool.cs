@@ -8,6 +8,25 @@ public class BarrelPool : BaseObjectPool
     [SerializeField]
     float minDistance;
 
+    protected override void Start()
+    {
+        base.Start();
+        GameManager.Instance.gameMode.OnChanged += this.GameModeOnChanged;
+    }
+
+    private void GameModeOnChanged()
+    {
+        switch (GameManager.Instance.gameMode.Value)
+        {
+            case GameManager.GameMode.Barrels:
+                this.shouldGenerate = true;
+                break;
+            case GameManager.GameMode.Drones:
+                this.shouldGenerate = false;
+                break;
+        }
+    }
+
     protected override void Generate()
     {
         int idx = activeObjects.Count - 1;
