@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00077867036, g: 0.0041233166, b: 0.019989327, a: 1}
+  m_IndirectSpecularColor: {r: 0.0007227566, g: 0.0039890646, b: 0.019866956, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21552,8 +21552,10 @@ MonoBehaviour:
   - {fileID: 127068617}
   generateDistance: 20
   shouldGenerate: 1
-  rarity: 0.1
-  minDistance: 4
+  minDistance: 6
+  deviation: 3
+  doubleChance: 0.2
+  doubleSplit: 0.5
 --- !u!4 &488756323
 Transform:
   m_ObjectHideFlags: 0
@@ -37141,6 +37143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 0
   barrelsLength: 20
+  startSpawn: 2
+  spawnStep: 2
+  toSpawn: 0
 --- !u!4 &817333956
 Transform:
   m_ObjectHideFlags: 0
@@ -89867,8 +89872,8 @@ MonoBehaviour:
   dronePrefab: {fileID: 6075190532703877222, guid: 39a749c10dc9d5f47ae271cafe961a97,
     type: 3}
   targetBox: {fileID: 217273939}
-  minSpawn: 20
-  maxSpawn: 20
+  deviation: 1
+  maxWave: 20
   delay: 10
 --- !u!1 &1938140941
 GameObject:
