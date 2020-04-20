@@ -11,7 +11,8 @@ public class GameManager : Singleton<GameManager>
         MainMenu,
         Playing,
         GameOver,
-        Credits
+        Credits,
+        Tutorial
     }
 
     public ReactiveProperty<State> state = new ReactiveProperty<State>(State.MainMenu);

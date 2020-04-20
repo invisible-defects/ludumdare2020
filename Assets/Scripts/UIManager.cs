@@ -38,8 +38,8 @@ public class UIManager : UIBehaviour
                     case GameManager.State.Playing:
                     case GameManager.State.GameOver:
                         return DrawGameUI();
-                    //case GameManager.State.Credits:
-                    //    break;
+                    case GameManager.State.Tutorial:
+                        return DrawTutorial();
                     default:
                         return null;
                 }
@@ -53,11 +53,12 @@ public class UIManager : UIBehaviour
                 Draw("Column",
                     DrawLeaf("Title"),
                     MenuButton.Draw("Start",
-                        OnClick(_ => GameManager.Instance.state.Value = GameManager.State.Playing)
+                        OnClick(_ => GameManager.Instance.state.Value = GameManager.State.Tutorial)
                     ),
                     MenuButton.Draw("Credits")
                 ),
-                DrawLeaf("LD")
+                DrawLeaf("LD"),
+                DrawLeaf("BG")
             );
     }
 
@@ -67,6 +68,20 @@ public class UIManager : UIBehaviour
                 DrawLeaf("Text (TMP)",
                     Set<TMP_Text>(t => t.text = "SCORE: " + GameManager.Instance.score.Value)
                 )
+            );
+    }
+
+    private UINode DrawTutorial()
+    {
+        return Draw("Tutorial",
+                Draw("Column",
+                    DrawLeaf("Title"),
+                    DrawLeaf("Tutorial"),
+                    MenuButton.Draw("Ok",
+                        OnClick(_ => GameManager.Instance.state.Value = GameManager.State.Playing)
+                    )
+                ),
+                DrawLeaf("BG")
             );
     }
 }
