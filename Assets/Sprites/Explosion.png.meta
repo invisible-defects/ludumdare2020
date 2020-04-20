@@ -1,34 +1,79 @@
 fileFormatVersion: 2
-guid: e07d1d97f4d68974ead77b808f409e7c
+guid: 67055a2234438ab499a998f213844170
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4112356383579328530
-    second: Drone_0
+      213: 5986030973748356752
+    second: Explosion_0
   - first:
-      213: -9122016740902801177
-    second: Drone_1
+      213: -5600206312213581617
+    second: Explosion_1
   - first:
-      213: -7695309289240506667
-    second: Drone_2
+      213: 3815954189206336483
+    second: Explosion_2
   - first:
-      213: -3223525642366603235
-    second: Drone_3
+      213: -3690502768834906923
+    second: Explosion_3
   - first:
-      213: 5097761365294175657
-    second: Drone_0
+      213: -49130668184793455
+    second: Explosion_4
   - first:
-      213: -5645198711544693265
-    second: Drone_1
+      213: -2330519403281856691
+    second: Explosion_5
   - first:
-      213: -6363405967764860246
-    second: Drone_2
+      213: -4796932125324312052
+    second: Explosion_6
   - first:
-      213: 7911813556852318988
-    second: Drone_3
+      213: 4348620978117878488
+    second: Explosion_7
   - first:
-      213: 1371902213157426602
-    second: Drone_4
+      213: 7788287979965792003
+    second: Explosion_8
+  - first:
+      213: -5876230404456235001
+    second: Explosion_9
+  - first:
+      213: -7061159883300251746
+    second: Explosion_10
+  - first:
+      213: 497560801652076451
+    second: Explosion_11
+  - first:
+      213: -222035745519106718
+    second: Explosion_12
+  - first:
+      213: -5197271548307897853
+    second: Explosion_13
+  - first:
+      213: -3806839202968226997
+    second: Explosion_14
+  - first:
+      213: 1213653969873606975
+    second: Explosion_15
+  - first:
+      213: -4915350518889871028
+    second: Explosion_16
+  - first:
+      213: -966352174932169086
+    second: Explosion_17
+  - first:
+      213: 5240812164920822625
+    second: Explosion_18
+  - first:
+      213: -293603124231823741
+    second: Explosion_19
+  - first:
+      213: 6340498610658388462
+    second: Explosion_20
+  - first:
+      213: -8875219262236141736
+    second: Explosion_21
+  - first:
+      213: -3137233733933034950
+    second: Explosion_22
+  - first:
+      213: -6028636648774303401
+    second: Explosion_23
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -150,13 +195,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Drone_0
+      name: Explosion_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,41 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a5d110e3f2eeb640800000000000000
-      internalID: 5097761365294175657
+      spriteID: 096a1cc8477a21350800000000000000
+      internalID: 5986030973748356752
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drone_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fedb2ef6ea938a1b0800000000000000
-      internalID: -5645198711544693265
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Drone_2
+      name: Explosion_1
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,41 +230,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa256c1bcf3a0b7a0800000000000000
-      internalID: -6363405967764860246
+      spriteID: fc0fb9bb7021842b0800000000000000
+      internalID: -5600206312213581617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drone_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c036d49e2886ccd60800000000000000
-      internalID: 7911813556852318988
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Drone_4
+      name: Explosion_2
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,8 +251,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa512d15bc9f90310800000000000000
-      internalID: 1371902213157426602
+      spriteID: 3e3bec60e1ef4f430800000000000000
+      internalID: 3815954189206336483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d4fffce843b8ccc0800000000000000
+      internalID: -3690502768834906923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19e8447eae3715ff0800000000000000
+      internalID: -49130668184793455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d47ca3943f458afd0800000000000000
+      internalID: -2330519403281856691
       vertices: []
       indices: 
       edges: []
@@ -257,7 +323,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a7286116d9b1f0b4cab13af9530bf826
+    spriteID: 608a0a758b21b9d4cbfab4a29ad4e757
     internalID: 0
     vertices: []
     indices: 

@@ -13,6 +13,8 @@ public abstract class BaseObjectPool : MonoBehaviour
     [SerializeField]
     protected float generateDistance;
 
+    public bool shouldGenerate = true;
+
     protected ObjectPool objectPool = new ObjectPool();
 
     void Start()
@@ -26,7 +28,10 @@ public abstract class BaseObjectPool : MonoBehaviour
             GameManager.Instance.state.Value == GameManager.State.GameOver)
         {
             CheckDispawn();
-            Generate();
+            if (shouldGenerate)
+            {
+                Generate();
+            }
             Move();
         }
     }

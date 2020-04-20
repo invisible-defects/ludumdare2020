@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RandomObjectPool : BaseObjectPool
+public class BarrelPool : BaseObjectPool
 {
     [SerializeField]
     float rarity;
@@ -10,8 +10,10 @@ public class RandomObjectPool : BaseObjectPool
 
     protected override void Generate()
     {
-        Vector3 lastActiveObjectPosition = activeObjects[activeObjects.Count - 1].transform.position;
-        float distance = transform.position.x + generateDistance - lastActiveObjectPosition.x;
+        int idx = activeObjects.Count - 1;
+        float distance = idx >= 0 ?
+            transform.position.x + generateDistance - activeObjects[activeObjects.Count - 1].transform.position.x :
+            Mathf.Infinity;
         if (distance > minDistance && Random.Range(0f, 1f) <= rarity)
         {
             Vector3 position = transform.position;
