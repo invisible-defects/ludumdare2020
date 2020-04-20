@@ -41,6 +41,8 @@ public class MusicManager : MonoBehaviour
                 mainSource.clip = intro;
                 mainSource.loop = true;
                 mainSource.Play();
+                waitingForMain = false;
+                mainDelay = 0;
                 break;
             default:
                 break;
