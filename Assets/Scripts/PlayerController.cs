@@ -151,8 +151,10 @@ public class PlayerController : MonoBehaviour
                 ssc.Play("Run");
                 break;
             case GameManager.State.MainMenu:
+                //Reset
                 this.State = PlayerState.Idle;
                 ssc.Play("Idle");
+                cooldown.Value = 1;
                 break;
             default:
                 break;

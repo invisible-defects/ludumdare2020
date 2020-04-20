@@ -85,8 +85,15 @@ public class GameManager : Singleton<GameManager>
                 PlayerPrefs.SetInt("HighScore", HighScore);
             }
 
+            // Reset
             score.Value = 0;
             distance = 0;
+            toSpawn = startSpawn - spawnStep;
+            gameMode.SilentSet(GameMode.Barrels);
+        }
+        else if (state.Value == State.Playing)
+        {
+            lastGameModeChange = Time.time;
         }
     }
 }

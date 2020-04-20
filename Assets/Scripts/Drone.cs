@@ -124,6 +124,7 @@ public class Drone : MonoBehaviour
         {
             spotlight.gameObject.SetActive(false);
             state = State.Flee;
+            Destroy(gameObject, 10);
         }
         if (countdownEnd.HasValue)
         {
