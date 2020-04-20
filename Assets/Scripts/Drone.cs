@@ -53,7 +53,7 @@ public class Drone : MonoBehaviour
         ssc = GetComponent<SpriteSheetController>();
         ssc.OnAnimationEnd += this.OnAnimationEnd;
         spawnPoint = transform.position;
-        GameManager.Instance.RegisterDrone();
+        DroneSpawner.Instance.RegisterDrone();
     }
 
     private void Update()
@@ -178,7 +178,7 @@ public class Drone : MonoBehaviour
     {
         if (name == "Explosion")
         {
-            GameManager.Instance.UnRegisterDrone();
+            DroneSpawner.Instance.UnRegisterDrone();
             Destroy(gameObject);
         }
     }

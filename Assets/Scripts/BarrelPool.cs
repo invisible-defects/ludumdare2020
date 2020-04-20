@@ -4,9 +4,13 @@ using System.Collections;
 public class BarrelPool : BaseObjectPool
 {
     [SerializeField]
-    float rarity;
-    [SerializeField]
     float minDistance;
+    [SerializeField]
+    float deviation = 2f;
+    [SerializeField]
+    float doubleChance = 0.2f;
+    [SerializeField]
+    float doubleSplit = 0.5f;
 
     protected override void Start()
     {
@@ -33,11 +37,21 @@ public class BarrelPool : BaseObjectPool
         float distance = idx >= 0 ?
             transform.position.x + generateDistance - activeObjects[activeObjects.Count - 1].transform.position.x :
             Mathf.Infinity;
-        if (distance > minDistance && Random.Range(0f, 1f) <= rarity)
+        if (distance > minDistance)
         {
             Vector3 position = transform.position;
-            position.x += generateDistance;
-            GetRandom(position);
+            position.x += generateDistance + Random.Range(-deviation, deviation);
+            if (Random.Range(0f, 1f) < doubleChance)
+            {
+                var left  = position - Vector3.right * doubleSplit * 0.5f;
+                var right = position + Vector3.right * doubleSplit * 0.5f;
+                GetRandom(left);
+                GetRandom(right);
+            }
+            else
+            {
+                GetRandom(position);
+            }
         }
     }
 }

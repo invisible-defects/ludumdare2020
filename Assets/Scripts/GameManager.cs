@@ -35,11 +35,18 @@ public class GameManager : Singleton<GameManager>
 
     private float lastGameModeChange = 0;
 
-    private int dronesCount = 0;
+    [SerializeField]
+    private int startSpawn = 2;
+    [SerializeField]
+    private int spawnStep = 2;
+
+    [HideInInspector]
+    public int toSpawn;
 
     private void Start()
     {
         HighScore = PlayerPrefs.GetFloat("HighScore", 0f);
+        toSpawn = startSpawn - spawnStep;
     }
 
     private void Update()
@@ -54,25 +61,16 @@ public class GameManager : Singleton<GameManager>
                 if (Time.time > lastGameModeChange + barrelsLength)
                 {
                     lastGameModeChange = Time.time;
+                    toSpawn += spawnStep;
                     gameMode.Value = GameMode.Drones;
                 }
             }
         }
     }
 
-    public void RegisterDrone()
+    public void SetGameMode(GameMode gameMode)
     {
-        ++dronesCount;
-    }
-
-    public void UnRegisterDrone()
-    {
-        --dronesCount;
-
-        if (dronesCount == 0)
-        {
-            lastGameModeChange = Time.time;
-            gameMode.Value = GameMode.Barrels;
-        }
+        lastGameModeChange = Time.time;
+        this.gameMode.Value = gameMode;
     }
 }
