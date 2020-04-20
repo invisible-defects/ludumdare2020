@@ -89,7 +89,8 @@ public class UIManager : UIBehaviour
                 ),
                 DrawLeaf("Cooldown",
                     Set<Image>(i => i.fillAmount = player.cooldown.Value)
-                )
+                ),
+                DrawLeaf("Minigame")
             );
     }
 
