@@ -13,6 +13,8 @@ public class MusicManager : MonoBehaviour
     private AudioClip playStart;
     [SerializeField]
     private AudioClip playMain;
+    [SerializeField]
+    private AudioClip mishxn;
 
     bool waitingForMain = false;
     float mainDelay = 0;
@@ -51,6 +53,18 @@ public class MusicManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.M) 
+            && GameManager.Instance.state.Value == GameManager.State.Playing
+            && GameManager.Instance.score.Value > 1337 
+            && GameManager.Instance.score.Value < 6969
+        ){
+            mainSource.clip = mishxn;
+            mainSource.loop = true;
+            mainSource.Play();
+            waitingForMain = false;
+            mainDelay = 0;
+        }
+        
         if(!waitingForMain)
             return;
         
