@@ -82970,7 +82970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b660290a30c53c4ea54b1d1aee83d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 6
+  jumpSpeed: 7
   freeSpeed: 3.5
   topThreshold: 1
   bulletSpawn: {fileID: 1465987781}
