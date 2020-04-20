@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private SpriteSheetController ssc;
+    private SoundManager sm;
 
     [SerializeField]
     private float jumpSpeed;
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         ssc = GetComponent<SpriteSheetController>();
+        sm = SoundManager.Instance;
         ssc.OnAnimationEnd += this.OnAnimationEnd;
         GameManager.Instance.state.OnChanged += this.OnStateChange;
     }
@@ -55,6 +57,7 @@ public class PlayerController : MonoBehaviour
             {
                 State = PlayerState.Jumping;
                 ssc.Play("JumpStart");
+                sm.playJump();
             }
         }
         if (Input.GetKeyUp(KeyCode.Space))
@@ -83,6 +86,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Mathf.Approximately(cooldown.Value, 1))
                 {
+                    sm.playShot();
                     cooldown.Value = 0;
                     var spawnOnScreen = Camera.main.WorldToScreenPoint(bulletSpawn.position);
                     var direction = (Input.mousePosition - spawnOnScreen).normalized;
@@ -107,6 +111,7 @@ public class PlayerController : MonoBehaviour
         State = PlayerState.Dead;
         GameManager.Instance.state.Value = GameManager.State.GameOver;
         ssc.Play("Death");
+        sm.playDeath();
     }
 
     private void OnCollisionEnter(Collision collision)

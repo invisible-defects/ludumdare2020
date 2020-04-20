@@ -37,6 +37,7 @@ public class Drone : MonoBehaviour
     private Rigidbody rb;
 
     private SpriteSheetController ssc;
+    private SoundManager sm;
 
     private State state = State.Appear;
 
@@ -52,6 +53,7 @@ public class Drone : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ssc = GetComponent<SpriteSheetController>();
         ssc.OnAnimationEnd += this.OnAnimationEnd;
+        sm = SoundManager.Instance;
         spawnPoint = transform.position;
         DroneSpawner.Instance.RegisterDrone();
     }
@@ -149,6 +151,7 @@ public class Drone : MonoBehaviour
         spotlight.gameObject.SetActive(false);
         state = State.Death;
         ssc.Play("Explosion");
+        sm.playExplosion();
         rb.useGravity = true;
     }
 
