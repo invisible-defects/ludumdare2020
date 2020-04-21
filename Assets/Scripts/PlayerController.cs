@@ -108,6 +108,9 @@ public class PlayerController : MonoBehaviour
 
     public void Death()
     {
+        if (State == PlayerState.Dead)
+            return;
+
         State = PlayerState.Dead;
         GameManager.Instance.state.Value = GameManager.State.GameOver;
         ssc.Play("Death");
