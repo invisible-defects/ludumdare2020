@@ -15,6 +15,10 @@ public class SoundManager : Singleton<SoundManager>
     private AudioClip death;
     [SerializeField]
     private AudioClip explosion;
+    [SerializeField]
+    private AudioClip batteryCharged;
+    [SerializeField]
+    private AudioClip batteryFailed;
 
     bool waitingForMain = false;
     float mainDelay = 0;
@@ -40,6 +44,18 @@ public class SoundManager : Singleton<SoundManager>
     public void playExplosion()
     {
         mainSource.clip = explosion;
+        mainSource.Play();
+    }
+
+    public void playCharged()
+    {
+        mainSource.clip = batteryCharged;
+        mainSource.Play();
+    }
+    
+    public void playFailed()
+    {
+        mainSource.clip = batteryFailed;
         mainSource.Play();
     }
 }

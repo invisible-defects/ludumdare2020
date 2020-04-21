@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0007227566, g: 0.0039890646, b: 0.019866956, a: 1}
+  m_IndirectSpecularColor: {r: 0.00077867036, g: 0.0041233166, b: 0.019989327, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -32794,7 +32794,7 @@ PrefabInstance:
     - target: {fileID: 3324279132415075242, guid: 37cec04504c604e458fa49d6524124a5,
         type: 3}
       propertyPath: batterySpeed
-      value: 0.04
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 3324279132415075242, guid: 37cec04504c604e458fa49d6524124a5,
         type: 3}
@@ -92959,6 +92959,8 @@ MonoBehaviour:
   shot: {fileID: 8300000, guid: 11b1ec8bc4b96a145bebba344f4e558d, type: 3}
   death: {fileID: 8300000, guid: 0e62a8250714aec40967aa769205aeef, type: 3}
   explosion: {fileID: 8300000, guid: 9e26e284af0589f418589851779d6a94, type: 3}
+  batteryCharged: {fileID: 8300000, guid: 19ed15a47b81dc64c85a69faa17c48cc, type: 3}
+  batteryFailed: {fileID: 8300000, guid: 5f4c3e315108ae24d899acc745df14b2, type: 3}
 --- !u!4 &1609493751
 Transform:
   m_ObjectHideFlags: 0

@@ -50,8 +50,11 @@ public class MinigameUI : MonoBehaviour
     [SerializeField]
     private Image batteryImg;
 
+    private SoundManager sm;
+
     private void Start()
     {
+        sm = SoundManager.Instance;
         baseSize = frame.sizeDelta;
         GameManager.Instance.state.OnChanged += this.StateOnChanged;
     }
@@ -102,10 +105,12 @@ public class MinigameUI : MonoBehaviour
         {
             if (underCenter == null)
             {
+                sm.playFailed();
                 battery -= batteryPenalty;
             }
             else
             {
+                sm.playCharged();
                 spikes.Remove(underCenter);
                 Destroy(underCenter.gameObject);
                 battery += batteryAdd;
