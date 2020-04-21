@@ -67,7 +67,7 @@ public class DroneSpawner : Singleton<DroneSpawner>
     private void Spawn(int count)
     {
         var spawnCount = Random.Range(count - deviation, count + deviation + 1);
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < spawnCount; i++)
         {
             var spawnPoint = box.RandomPoint(transform.position.z);
             var droneGo = Instantiate(dronePrefab, spawnPoint, Quaternion.identity);
