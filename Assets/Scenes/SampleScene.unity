@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0007227566, g: 0.0039890646, b: 0.019866956, a: 1}
+  m_IndirectSpecularColor: {r: 0.00077867036, g: 0.0041233166, b: 0.019989327, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -32877,6 +32877,21 @@ PrefabInstance:
       propertyPath: batteryImg
       value: 
       objectReference: {fileID: 510588303}
+    - target: {fileID: 3324279132415075242, guid: 37cec04504c604e458fa49d6524124a5,
+        type: 3}
+      propertyPath: minDist
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324279132415075242, guid: 37cec04504c604e458fa49d6524124a5,
+        type: 3}
+      propertyPath: batterySpeed
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324279132415075242, guid: 37cec04504c604e458fa49d6524124a5,
+        type: 3}
+      propertyPath: spikePixelWidth
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3324279132415075243, guid: 37cec04504c604e458fa49d6524124a5,
         type: 3}
       propertyPath: m_LocalPosition.x
